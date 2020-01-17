@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'; /* adds redux connect() function */
 import './App.css';
 
 class App extends Component {
@@ -21,4 +22,11 @@ class App extends Component {
   }
 };
 
-export default App;
+// lines 26-30 are using the connect() function
+// connect listens to state changes and only rerenders when there's been one
+// it then provides the relevant changes to the component (i.e. what is specified in mapStateToProps)
+const mapStateToProps = (state) => {
+  return { items: state.items };
+};
+ 
+export default connect(mapStateToProps)(App);
